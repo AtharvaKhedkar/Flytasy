@@ -17,7 +17,7 @@
                 </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="faq_tab_2-tab" data-bs-toggle="tab" data-bs-target="#faq_tab_2" type="button" role="tab" aria-controls="faq_tab_2" aria-selected="false">
+                <button onClick=bookcab class="nav-link" id="faq_tab_2-tab" data-bs-toggle="tab" data-bs-target="#faq_tab_2" type="button" role="tab" aria-controls="faq_tab_2" aria-selected="false">
                   <div class="d-flex flex-column lh-lg">
                     <i class="fas fa-car"></i>
                     <span>Book Cab</span>
@@ -113,13 +113,13 @@
                     <div class="col-md-6 col-12 mb-4">
                       <div class="d-flex flex-column">
                         <p class="h-crimson">Pick-Up Location</p>
-                        <input class="form-control" placeholder="Hotel or Airport" type="text">
+                        <input class="form-control" placeholder="Hotel or Airport" type="text" id ="pick">
                       </div>
                     </div>
                     <div class="col-md-6 col-12 mb-4">
                       <div class="d-flex flex-column">
                         <p class="h-crimson">Drop Location</p>
-                        <input class="form-control" placeholder="Hotel or Airport" type="text">
+                        <input class="form-control" placeholder="Hotel or Airport" type="text" id="drop">
                       </div>
                     </div>
                   </div>
@@ -257,9 +257,20 @@
 </template>
 
 <script>
+const bookcab = () => {
+  const droplat = 13.198488554690893
+  const droplong = 77.70700049280083
+  const picklat = 13.099309594833942
+  const picklong = 77.62717148588415
+  const dropat = document.getElementById("drop")
+  return `https://book.olacabs.com/?lat=${picklat}&lng=${picklong}&drop_lat=${droplat}&drop_lng=${droplong}&when=later&dsw=yes`
+}
 export default {
   name: "Booking",
 };
+
+
+
 </script>
 
 <style scoped>
