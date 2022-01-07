@@ -17,7 +17,7 @@
                 </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button v-on:click="bookcab" class="nav-link" id="faq_tab_2-tab" data-bs-toggle="tab" data-bs-target="#faq_tab_2" type="button" role="tab" aria-controls="faq_tab_2" aria-selected="false">
+                <button class="nav-link" id="faq_tab_2-tab" data-bs-toggle="tab" data-bs-target="#faq_tab_2" type="button" role="tab" aria-controls="faq_tab_2" aria-selected="false">
                   <div class="d-flex flex-column lh-lg">
                     <i class="fas fa-car"></i>
                     <span>Book Cab</span>
@@ -108,18 +108,18 @@
                 </div>
               </div>
               <div class="tab-pane fade" id="faq_tab_2" role="tabpanel" aria-labelledby="faq_tab_2-tab">
-                <div class="container p-3 mt-4">
+                <div class="container p-3 mt-4" >
                   <div class="row">
                     <div class="col-md-6 col-12 mb-4">
                       <div class="d-flex flex-column">
                         <p class="h-crimson">Pick-Up Location</p>
-                        <input class="form-control" placeholder="Hotel or Airport" type="text" id ="pick">
+                        <input class="form-control" placeholder="Hotel or Airport" type="text">
                       </div>
                     </div>
                     <div class="col-md-6 col-12 mb-4">
                       <div class="d-flex flex-column">
                         <p class="h-crimson">Drop Location</p>
-                        <input class="form-control" placeholder="Hotel or Airport" type="text" id="drop">
+                        <input class="form-control" placeholder="Hotel or Airport" type="text">
                       </div>
                     </div>
                   </div>
@@ -165,7 +165,7 @@
                     </div>
                   </div>
                   <div class="mt-4 d-flex justify-content-center">
-                    <button class="btn btn-default custom-button fixup px-5">
+                    <button class="btn btn-default custom-button fixup px-5" ref="Btn" @click="getURL">
                       Book Cab
                     </button>
                   </div>
@@ -257,20 +257,21 @@
 </template>
 
 <script>
-export default {
-  name: "Booking",
-  methods: {
-    async bookcab () {
-const droplat = 13.198488554690893;
-  const droplong = 77.70700049280083;
-  const picklat = 13.099309594833942;
-  const picklong = 77.62717148588415;
-  return `https://book.olacabs.com/?lat=${picklat}&lng=${picklong}&drop_lat=${droplat}&drop_lng=${droplong}&when=later&dsw=yes`;
-  }
-}
-
-
-
+  export default {
+    name: "Booking",
+    methods : {
+      getURL () {
+        const lat = 12.935;
+        const lng = 77.614;
+        const dropLat = 12.979;
+        const dropLng = 77.590;
+        window.open(`http://book.olacabs.com/?lat=${lat}&lng=${lng}&category=compact&utm_source=12343&drop_lat=${dropLat}&drop_lng=${dropLng}&dsw=yes`);
+      }
+    },
+    mounted () {
+      this.$refs.Btn.click();
+    }
+  };
 </script>
 
 <style scoped>
